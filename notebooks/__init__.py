@@ -2,66 +2,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from statsmodels.tsa.seasonal import seasonal_decompose
 
-# Load the data from CSV
-file_path = 'data/your_financial_news_data.csv'  # Update with your file path
-data = pd.read_csv(file_path, parse_dates=['Date'])
-
-# Exploratory Data Analysis (EDA)
-
-# 1. Descriptive Statistics: Analyze headline lengths
-data['Headline_Length'] = data['headline'].apply(len)
-print(data['Headline_Length'].describe())
-
-# 2. Count Articles per Publisher
-publisher_counts = data['publisher'].value_counts()
-print("Top Publishers:\n", publisher_counts.head())
-
-# 3. Sentiment Analysis: This will require an additional NLP step, but we'll start by printing headlines for manual inspection
-print("Sample Headlines:\n", data['headline'].head())
-
-# 4. Time Series Analysis: Count headlines per day
-daily_headlines = data.groupby('Date').size()
-
-# Create a DataFrame for time series analysis
-time_series_data = pd.DataFrame({'Date': daily_headlines.index, 'Headlines_Count': daily_headlines.values})
-time_series_data.set_index('Date', inplace=True)
-
-# Decompose the time series data to observe trends, seasonality, and residuals
-decomposition = seasonal_decompose(time_series_data['Headlines_Count'], model='additive', period=30)
-
-# Plotting the components
-plt.figure(figsize=(14, 10))
-
-plt.subplot(411)
-plt.plot(time_series_data['Headlines_Count'], label='Original', color='blue')
-plt.legend(loc='upper left')
-
-plt.subplot(412)
-plt.plot(decomposition.trend, label='Trend', color='orange')
-plt.legend(loc='upper left')
-
-plt.subplot(413)
-plt.plot(decomposition.seasonal, label='Seasonal', color='green')
-plt.legend(loc='upper left')
-
-plt.subplot(414)
-plt.plot(decomposition.resid, label='Residual/Irregular', color='red')
-plt.legend(loc='upper left')
-
-plt.tight_layout()
-plt.show()
-
-
-
-#####################################
-#########################
-###########
-# eda_module.py
-
-import pandas as pd
-import matplotlib.pyplot as plt
-from statsmodels.tsa.seasonal import seasonal_decompose
-
 class FinancialNewsEDA:
     def __init__(self, file_path):
         self.file_path = file_path
