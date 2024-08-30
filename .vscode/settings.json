@@ -1,0 +1,20 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "files.autoSave": "afterDelay",
+  "editor.tabSize": 2,
+  "workbench.colorTheme": "One Monokai",
+  "editor.minimap.renderCharacters": false,
+  "prettier.enableDebugLogs": true,
+  "prettier.bracketSameLine": true,
+  "editor.multiCursorModifier": "ctrlCmd",
+  "php.validate.executablePath": "",
+  "editor.formatOnPaste": true,
+  "editor.formatOnType": true,
+  "workbench.iconTheme": "material-icon-theme",
+  "files.autoSaveDelay": 600,
+  "window.zoomLevel": 1,
+  "jupyter.interactiveWindow.textEditor.executeSelection": true,
+  "notebook.output.scrolling": true,
+  "chatgpt.lang": "en"
+}
